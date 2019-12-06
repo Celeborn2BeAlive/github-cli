@@ -7,6 +7,7 @@ import urllib
 
 TOKEN_ENV_VAR = 'C2BA_GITHUB_TOKEN'
 GITHUB_BASE_URL = 'https://github.com/'
+GITHUB_BASE_SSH_URL = 'git@github.com:'
 
 
 def main():
@@ -36,6 +37,8 @@ def main():
             exit(1)
         logging.info(
             f'Succesfully created repository {urllib.parse.urljoin(GITHUB_BASE_URL, repo.full_name)}')
+        logging.info(
+            f'SSH URL: {GITHUB_BASE_SSH_URL}{repo.full_name}.git')
     if args.action == 'delete-repo':
         try:
             repo = user.get_repo(args.name)
